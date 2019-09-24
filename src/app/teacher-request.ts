@@ -5,7 +5,7 @@ export class TeacherRequest {
     public type: string,
     public request: string,
     public details?: string,
-    public freePerid?: string
+    public freePeriod?: string
   ) {}
 
 }
