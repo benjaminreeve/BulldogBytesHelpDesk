@@ -1,4 +1,6 @@
 const nodemailer = require("nodemailer")
+const http = require('http');
+const path = require('path')
 
 const express = require("express")
 const app = express()
@@ -11,9 +13,11 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static(path.join(__dirname, 'dist')))
+app.use(express.static(path.join(__dirname, 'dist/HelpDesk')))
 
-app.get('/', (req, res) => res.send('Heyyyyy'))
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/HelpDesk/index.html'))
+})
 
 var transport = nodemailer.createTransport({
   service: 'gmail',
