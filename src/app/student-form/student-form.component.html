@@ -1,3 +1,33 @@
-<p>
-  student-form works!
-</p>
+<div class="container">
+
+  <form [formGroup]="Form" (ngSubmit)="onSubmit()">
+
+    <p>Name:</p>
+    <input type="text" formControlName="nameField" required><br>
+
+    <p>Grade:</p>
+    <input type="text" formControlName="gradeField" required><br>
+
+    <p>Type of request:</p>
+    <select formControlName="typeField" required>
+      <option [ngValue]="null" disabled>Request Type</option>
+      <option *ngFor = "let type of requestTypes" [ngValue]="type">{{type}}</option>
+    </select><br>
+
+    <p>Teacher:</p>
+    <input type="text" formControlName="teacherField" required><br>
+
+    <p>Email:</p>
+    <input type="text" formControlName="emailField" required><br>
+
+    <p>Request:</p>
+    <input type="text" formControlName="requestField" required><br>
+
+    <p>Details:</p>
+    <textarea rows="4" cols="50" formControlName="detailsField">
+    </textarea><br>
+
+    <button type="submit" [disabled]="!Form.valid">Submit</button>
+  </form>
+
+</div>

@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { TeacherRequest } from '../teacher-request';
 import { formControlBinding } from '@angular/forms/src/directives/ng_model';
 import { SendRequestService } from '../send-request.service';
+import { HttpClient } from '@angular/common/http';
+
 
 
 @Component({
@@ -12,13 +14,11 @@ import { SendRequestService } from '../send-request.service';
 })
 export class TeacherFormComponent implements OnInit {
 
-  constructor() {
+  constructor(private requestService: SendRequestService) {
     this.requestTypes = [
       'Tech Help', 'Informatinal Video'
     ];
   }
-
-  requestService = new SendRequestService();
 
   Form = new FormGroup({
     nameField: new FormControl(''),
@@ -40,7 +40,7 @@ export class TeacherFormComponent implements OnInit {
       this.Form.controls['freePeriodField'].value
     );
 
-    this.requestService.sendRequestForTeacer(request);
+    this.requestService.sendRequestForTeacher(request);
     this.Form.reset();
   }
 
