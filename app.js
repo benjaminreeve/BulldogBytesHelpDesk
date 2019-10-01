@@ -4,7 +4,7 @@ const path = require('path')
 
 const express = require("express")
 const app = express()
-const _port = 8000
+const _port = 80
 app.use(express.json())
 
 app.use(function(req, res, next) {
